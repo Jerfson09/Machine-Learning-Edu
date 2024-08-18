@@ -21,34 +21,32 @@ def main():
 
     st.markdown(html_temp, unsafe_allow_html=True)
 
-    Studentid = st.text_input("Student Id", "")
-    Gender = st.selectbox("Gender", ["M", "F"])
-    Tardies = st.text_input("Tardies", "")
-    Absence= st.text_input("Absence", "")
-    Transfers= st.text_input("Transfers", "")
-    Suspended= st.text_input("Suspended", "")
-    ESE = st.selectbox("ESE Status", ["Not ESE", "Specific Learning Disability", "Speech Impaired", "Gifted", "Other Health Impaired", "Autistic Spectrum Disorders", "Intellectual Disabilities", "Deaf/Hard of Hearing", "Language Impaired"])
-    Teacher= st.text_input("Teacher", "")
-    Ethnicity = st.selectbox("Ethnicity", ["African American", "Caucasian", "Hispanic", "Multi-Racial", "Hawaiian / PI", "Other"])
-    Previous_Year_Final_Score = st.text_input("Previous Year Final Scoree", "")
-    Diagnostic = st.text_input("Disagnostic", "")
-    Quarter_1_Assessment_1 = st.text_input("Quarter 1 Assessment 1", "")
-    Quarter_1_Assessment_2 = st.text_input("Quarter 1 Assessment 2", "")
-    Quarter_1_Assessment_3 = st.text_input("Quarter 1 Assessment 3", "")
-    Quarter_1_Assessment_4 = st.text_input("Quarter 1 Assessment 4", "")
-    Quarter_1_Assessment_5 = st.text_input("Quarter 1 Assessment 5", "")
-    Quarter_2_Assessment_1 = st.text_input("Quarter 2 Assessment 1", "")
-    Quarter_2_Assessment_2 = st.text_input("Quarter 2 Assessment 2", "")
-    Quarter_2_Assessment_3 = st.text_input("Quarter 2 Assessment 3", "")
-    Quarter_2_Assessment_4 = st.text_input("Quarter 2 Assessment 4", "")
-    Quarter_2_Assessment_5= st.text_input("Quarter 2 Assessment 5", "")
-    Quarter_1_Grade = st.text_input("Quarter 1 Grade", "")
-    Quarter_2_Grade = st.text_input("Quarter 2 Grade", "")
+    Studentid = st.number_input("Student Id", value=0 )
+    Absence= st.number_input("Absence", value=0 )
+    Suspended= st.number_input("Suspended", value=0 )
+    Previous_Year_Final_Score = st.number_input("Previous Year Final Scoree", value=0.00 )
+    Diagnostic = st.number_input("Disagnostic", value=0.00)
+    Quarter_1_Assessment_1 = st.number_input("Quarter 1 Assessment 1", value=0.00 )
+    Quarter_1_Assessment_2 = st.number_input("Quarter 1 Assessment 2", value=0.00)
+    Quarter_1_Assessment_3 = st.number_input("Quarter 1 Assessment 3", value=0.00 )
+    Quarter_1_Assessment_4 = st.number_input("Quarter 1 Assessment 4", value=0.00)
+    Quarter_1_Assessment_5 = st.number_input("Quarter 1 Assessment 5", value=0.00 )
+    Quarter_2_Assessment_1 = st.number_input("Quarter 2 Assessment 1", value=0.00 )
+    Quarter_2_Assessment_2 = st.number_input("Quarter 2 Assessment 2", value=0.00)
+    Quarter_2_Assessment_3 = st.number_input("Quarter 2 Assessment 3", value=0.00 )
+    Quarter_2_Assessment_4 = st.number_input("Quarter 2 Assessment 4", value=0.00)
+    Quarter_2_Assessment_5= st.number_input("Quarter 2 Assessment 5", value=0.00 )
+    Quarter_1_Grade = st.number_input("Quarter 1 Grade", value=0 )
+    Quarter_2_Grade = st.number_input("Quarter 2 Grade", value=0)
+
+    
+ 
+
+ 
 
     if st.button("predict"): 
-        result = predict(np.array([[int(Studentid), str(Gender), str(Tardies), int(Absence),str(Transfers),int(Suspended),str(ESE),str(Teacher),str(Ethnicity),
-                                    int(Previous_Year_Final_Score), int(Diagnostic), int(Quarter_1_Assessment_1), int(Quarter_1_Assessment_2), int(Quarter_1_Assessment_2),
-                                    int(Quarter_1_Assessment_3), int(Quarter_1_Assessment_4), int(Quarter_1_Assessment_5), int(Quarter_2_Assessment_1), int(Quarter_2_Assessment_2),
+        result = predict(np.array([[int(Studentid),int(Absence), int(Suspended),int(Previous_Year_Final_Score), int(Diagnostic), int(Quarter_1_Assessment_1), int(Quarter_1_Assessment_2),
+                                  int(Quarter_1_Assessment_3), int(Quarter_1_Assessment_4), int(Quarter_1_Assessment_5), int(Quarter_2_Assessment_1), int(Quarter_2_Assessment_2),
                                     int(Quarter_2_Assessment_3), int(Quarter_2_Assessment_4), int(Quarter_2_Assessment_5), int(Quarter_1_Grade), int(Quarter_2_Grade)]]))
         st.text(result[0])
 
